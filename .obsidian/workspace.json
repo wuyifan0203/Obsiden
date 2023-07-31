@@ -146,7 +146,7 @@
             }
           },
           {
-            "id": "2a5a075b414cd22a",
+            "id": "d58be6b0ba4aa4b1",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -176,9 +176,10 @@
   },
   "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
+    "未命名.md",
+    "note/shell/shell基本语法.md",
     "note",
     "note/javascript/generator的使用.md",
-    "note/shell/shell基本语法.md",
     "note/shell",
     "2023-07-24.md",
     "note/git/git stash 指令.md",
