@@ -1,0 +1,191 @@
+{
+  "main": {
+    "id": "179bd55e066698fd",
+    "type": "split",
+    "children": [
+      {
+        "id": "72016ecdd9b5fdca",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "91b88905cf1c7cb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "note/shell/shell基本语法.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b21f4e064f4504fe",
+    "type": "split",
+    "children": [
+      {
+        "id": "693fb52742a6e624",
+        "type": "tabs",
+        "dimension": 41.388888888888886,
+        "children": [
+          {
+            "id": "eaacc49d5287551f",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "6e8b9bab087970c5",
+        "type": "tabs",
+        "dimension": 58.611111111111114,
+        "children": [
+          {
+            "id": "49713cba4804a9f9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c1551ae21763920a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e247226943867f36",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ecc1c72eaaa185e2",
+    "type": "split",
+    "children": [
+      {
+        "id": "89b4f1bb18cd9d37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4cf89aade840df99",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "note/shell/shell基本语法.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "00c7af1b3c246bc4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "note/shell/shell基本语法.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5169a0a45f9eb8f3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "ae85d01e8a972970",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "note/shell/shell基本语法.md"
+              }
+            }
+          },
+          {
+            "id": "2a5a075b414cd22a",
+            "type": "leaf",
+            "state": {
+              "type": "tasks_timeline_view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "publish:发布更改": false,
+      "workspaces:管理工作区布局": false,
+      "random-note:开始漫游笔记": false,
+      "omnisearch:Omnisearch": false
+    }
+  },
+  "active": "91b88905cf1c7cb8",
+  "lastOpenFiles": [
+    "note",
+    "note/javascript/generator的使用.md",
+    "note/shell/shell基本语法.md",
+    "note/shell",
+    "2023-07-24.md",
+    "note/git/git stash 指令.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "note/javascript",
+    "2023-05-22.md",
+    "note/git"
+  ]
+}
