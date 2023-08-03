@@ -73,3 +73,17 @@ echo $her_name  #   (无任何输出)
 ### shell 字符串
 
 使用单引号和双引号都可以
+
+#### 使用单引号
+
+- 单引号里的任意字符都会原样输出，里面不能使用变量
+
+#### 使用双引号
+
+```shell
+my_name="wyz"
+
+str="Hellow, my name is \"$my_name\" !"
+
+echo -e $str
+```

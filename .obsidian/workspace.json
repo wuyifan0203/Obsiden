@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note/git/github 443超时问题.md",
+                "file": "note/shell/shell基本语法.md",
                 "mode": "source",
                 "source": false
               }
@@ -114,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note/git/github 443超时问题.md",
+                "file": "note/shell/shell基本语法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note/git/github 443超时问题.md",
+                "file": "note/shell/shell基本语法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,12 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note/git/github 443超时问题.md"
+                "file": "note/shell/shell基本语法.md"
               }
             }
           },
           {
-            "id": "d58be6b0ba4aa4b1",
+            "id": "b617256d8ee7cc7a",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -189,8 +189,9 @@
   },
   "active": "3c2ca34db277a267",
   "lastOpenFiles": [
-    "note/git/git stash 指令.md",
     "note/git/github 443超时问题.md",
+    "note/前端工程化",
+    "note/git/git stash 指令.md",
     "note/shell/shell基本语法.md",
     "note",
     "note/javascript/generator的使用.md",
