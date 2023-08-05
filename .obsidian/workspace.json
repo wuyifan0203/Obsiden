@@ -159,7 +159,7 @@
             }
           },
           {
-            "id": "b617256d8ee7cc7a",
+            "id": "73a79ab1c19e4892",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -189,6 +189,8 @@
   },
   "active": "3c2ca34db277a267",
   "lastOpenFiles": [
+    "note/node/macbook切换node版本.md",
+    "note/node",
     "note/git/github 443超时问题.md",
     "note/前端工程化",
     "note/git/git stash 指令.md",

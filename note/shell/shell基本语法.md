@@ -76,7 +76,7 @@ echo $her_name  #   (无任何输出)
 
 #### 使用单引号
 
-- 单引号里的任意字符都会原样输出，里面不能使用变量
+- 单引号里的任意字符都会原样输出
 
 #### 使用双引号
 
@@ -86,4 +86,50 @@ my_name="wyz"
 str="Hellow, my name is \"$my_name\" !"
 
 echo -e $str
+```
+
+优点
+- 可以在内部使用变量
+- 可以使用转义字符
+
+```shell
+your_name="wyf"
+# 使用双引号拼接
+greeting="hello, "$your_name" !"
+greeting_1="hello, ${your_name} !"
+
+echo $greeting  $greeting_1 
+
+# hello, runoob ! hello, runoob !
+
+# 使用单引号拼接
+greeting_2='hello, '$your_name' !'
+greeting_3='hello, ${your_name} !'
+
+echo $greeting_2  $greeting_3
+
+# hello, runoob ! hello, ${your_name} !
+```
+
+### 获取字符串长度
+
+使用  `${#变量名}` , 等价于 `${#string[0]}`
+
+```shell
+string="abcd"
+
+echo ${#string}   # 输出 4
+
+echo ${#string[0]}  # 输出 4
+
+```
+
+### 截取字符串
+
+使用`${变量名:起始索引:结束索引}` 截取字符
+
+```shell
+string="runoob is a great site"
+
+echo ${string:1:4} # 输出 unoo
 ```
