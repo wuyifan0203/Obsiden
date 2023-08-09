@@ -1,3 +1,5 @@
+# git切换远程仓库
+
 ## 1、直接修改远程仓库地址
 
 ```git
@@ -12,14 +14,14 @@ git remote set-url origin git@xxx.xxx.com:xxxx/xxx.git
 
 将url替换，然后保存
 
-```
+```txt
 // .git/config
 
 [pull]
-	rebase = true
+ rebase = true
 [remote "origin"]
-	url = git@xxx.xxx.com:xxxx.git // ->替换
-	fetch = +refs/heads/*:refs/remotes/origin/*
+ url = git@xxx.xxx.com:xxxx.git // ->替换
+ fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "testDev"]
 
 ```
