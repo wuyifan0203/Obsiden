@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note/shell/shell基本语法.md",
+                "file": "note/git/git 切换远程仓库.md",
                 "mode": "source",
                 "source": false
               }
@@ -114,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note/shell/shell基本语法.md",
+                "file": "note/git/git 切换远程仓库.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note/shell/shell基本语法.md",
+                "file": "note/git/git 切换远程仓库.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,12 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note/shell/shell基本语法.md"
+                "file": "note/git/git 切换远程仓库.md"
               }
             }
           },
           {
-            "id": "73a79ab1c19e4892",
+            "id": "35a626b3cdfc591f",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -189,12 +189,13 @@
   },
   "active": "3c2ca34db277a267",
   "lastOpenFiles": [
+    "note/shell/shell基本语法.md",
+    "note/git/git 切换远程仓库.md",
     "note/node/macbook切换node版本.md",
     "note/node",
     "note/git/github 443超时问题.md",
     "note/前端工程化",
     "note/git/git stash 指令.md",
-    "note/shell/shell基本语法.md",
     "note",
     "note/javascript/generator的使用.md",
     "note/shell",
