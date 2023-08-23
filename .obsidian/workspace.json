@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note/git/git 切换远程仓库.md",
+                "file": "note/图形学/vector/向量.md",
                 "mode": "source",
                 "source": false
               }
@@ -114,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note/git/git 切换远程仓库.md",
+                "file": "note/图形学/vector/向量.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note/git/git 切换远程仓库.md",
+                "file": "note/图形学/vector/向量.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,12 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note/git/git 切换远程仓库.md"
+                "file": "note/图形学/vector/向量.md"
               }
             }
           },
           {
-            "id": "35a626b3cdfc591f",
+            "id": "8a8b219b82508c2c",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -189,9 +189,15 @@
   },
   "active": "3c2ca34db277a267",
   "lastOpenFiles": [
+    "resource",
+    "resource/Pasted image 20230823155113.png",
+    "note/图形学/vector/向量.md",
+    "resource/Pasted image 20230823155154.png",
     "note/shell/shell基本语法.md",
-    "note/git/git 切换远程仓库.md",
+    "note/图形学/vector",
+    "note/图形学",
     "note/node/macbook切换node版本.md",
+    "note/git/git 切换远程仓库.md",
     "note/node",
     "note/git/github 443超时问题.md",
     "note/前端工程化",
