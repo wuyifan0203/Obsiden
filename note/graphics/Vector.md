@@ -22,7 +22,7 @@ $$\vec{a} \cdot \vec{b} =|\vec{a}|\ |\vec{b}| \cos \theta $$
 ### 几何意义
 
 根据右手定则，从 $\vec a$ 旋转到 $\vec b$ 所形成的平面，拇指指向方向结果 ,$\vec n$ 代表平面的法向量
-$$\vec{a} \cdot \vec{b} =|\vec{a}|\ | \vec{b}| \sin \theta \vec{n} $$
+$$\vec{a} \times \vec{b} =|\vec{a}|\ | \vec{b}| \sin \theta \vec{n} $$
 
 
 * 如果以 $\vec a$ 和 $\vec b$ 为边构成一个平行四边形，那么这两个向量外积的模长与这个平行四边形的面积相等
