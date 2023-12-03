@@ -18,33 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "3c2ca34db277a267",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "note/front/javascript/Promise.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9562a406d3a47c61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "note/front/vue/keep-alive 的使用详解.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note/front/vue/keep-alive 的使用详解.md",
+                "file": "note/git/git 切换远程仓库.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note/front/vue/keep-alive 的使用详解.md",
+                "file": "note/git/git 切换远程仓库.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note/front/vue/keep-alive 的使用详解.md"
+                "file": "note/git/git 切换远程仓库.md"
               }
             }
           },
           {
-            "id": "2a3e701b9a2d418f",
+            "id": "efa3dfa57bf25fd9",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -199,28 +174,31 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9562a406d3a47c61",
+  "active": "efa3dfa57bf25fd9",
   "lastOpenFiles": [
-    "note/front/vue/keep-alive 的使用详解.md",
-    "note/front/vue",
-    "note/front",
-    "未命名",
-    "note/front/javascript/generator的使用.md",
-    "note/front/javascript/Promise.md",
-    "note/graphics/Vector.md",
+    "note/graphics/渲染管线.md",
     "resource/Pasted image 20230823155154.png",
     "resource/Pasted image 20230823155113.png",
-    "note/shell/shell基本语法.md",
-    "note/front/node/macbook切换node版本.md",
-    "note/git/git 切换远程仓库.md",
-    "note/git/github 443超时问题.md",
     "resource",
-    "note/Graphics/vector",
+    "note/graphics/Vector.md",
     "note/graphics",
+    "note/front/node/macbook切换node版本.md",
+    "note/front/vue/keep-alive 的使用详解.md",
+    "note/front/javascript/generator的使用.md",
+    "note/front/javascript/Promise.md",
     "note/front/node",
+    "note/front/vue",
+    "note/front/javascript",
+    "note/front",
+    "note/shell/shell基本语法.md",
+    "note/git/git 切换远程仓库.md",
+    "note/node/macbook切换node版本.md",
+    "note/node",
+    "note/git/github 443超时问题.md",
     "note/前端工程化",
     "note/git/git stash 指令.md",
     "note",
+    "note/javascript/generator的使用.md",
     "note/shell",
     "2023-07-24.md",
     "未命名 1.canvas",
