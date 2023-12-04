@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "note/shell/shell基本语法.md",
+                "file": "note/graphics/渲染管线.md",
                 "mode": "source",
                 "source": false
               }
@@ -101,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "note/git/git 切换远程仓库.md",
+                "file": "note/graphics/渲染管线.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "note/git/git 切换远程仓库.md",
+                "file": "note/graphics/渲染管线.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "note/git/git 切换远程仓库.md"
+                "file": "note/graphics/渲染管线.md"
               }
             }
           },
           {
-            "id": "efa3dfa57bf25fd9",
+            "id": "b9dd9fc34474447b",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -174,8 +174,15 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "efa3dfa57bf25fd9",
+  "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
+    "note/graphics/image.png",
+    "note/graphics/image-1.png",
+    "note/graphics/image-2.png",
+    "note/graphics/image-3.png",
+    "note/graphics/image-4.png",
+    "note/graphics/image-5.png",
+    "note/shell/shell基本语法.md",
     "note/graphics/渲染管线.md",
     "resource/Pasted image 20230823155154.png",
     "resource/Pasted image 20230823155113.png",
@@ -190,7 +197,6 @@
     "note/front/vue",
     "note/front/javascript",
     "note/front",
-    "note/shell/shell基本语法.md",
     "note/git/git 切换远程仓库.md",
     "note/node/macbook切换node版本.md",
     "note/node",
