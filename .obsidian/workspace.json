@@ -146,7 +146,7 @@
             }
           },
           {
-            "id": "b9dd9fc34474447b",
+            "id": "49116a57349be316",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -176,6 +176,9 @@
   },
   "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
+    "note/graphics/image-7.png",
+    "note/graphics/image-6.png",
+    "note/graphics/渲染管线.md",
     "note/graphics/image.png",
     "note/graphics/image-1.png",
     "note/graphics/image-2.png",
@@ -183,7 +186,6 @@
     "note/graphics/image-4.png",
     "note/graphics/image-5.png",
     "note/shell/shell基本语法.md",
-    "note/graphics/渲染管线.md",
     "resource/Pasted image 20230823155154.png",
     "resource/Pasted image 20230823155113.png",
     "resource",
