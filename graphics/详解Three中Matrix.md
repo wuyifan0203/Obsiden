@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-12-08 17:41:14
  * @LastEditors: wuyifan wuyifan@max-optics.com
- * @LastEditTime: 2023-12-11 20:59:11
+ * @LastEditTime: 2023-12-12 20:58:02
  * @FilePath: /Obsidian Vault/graphics/详解Three中Matrix.md
 -->
 
@@ -76,6 +76,16 @@ v.project(camera);
 
 ```
 
+## NormalMatrix (法线矩阵)
+法线矩阵用于将物体坐标系下的法线转换为相机坐标系下的法线。一般应用于光照物体的光照计算。
+是物体modalView的逆矩阵的转置矩阵。
+```javascript
+const normalMatrix = new Matrix3().getNormalMatrix(camera.matrixWorldInverse.clone().multiply(object.matrixWorld));
+//或者直接使用object.modalView
+const normalMatrix = new Matrix3().getNormalMatrix(object.matrixWorld);
+```
+
+## ViewPortMatrix (视口矩阵)
 
 
 
