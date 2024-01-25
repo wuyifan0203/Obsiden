@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "graphics/glsl/Base.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ecc1c72eaaa185e2",
@@ -101,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "graphics/glsl/Base.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "graphics/glsl/Base.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,12 +142,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "graphics/详解Three中Matrix.md"
+                "file": "graphics/glsl/Base.md"
               }
             }
           },
           {
-            "id": "3bcd7f5462ffaa5e",
+            "id": "65250a4123d6f456",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -174,8 +175,16 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "3bcd7f5462ffaa5e",
+  "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
+    "graphics/Vector.md",
+    "graphics/glsl/Base.md",
+    "graphics/glsl",
+    "graphics/渲染管线.md",
+    "graphics/详解Three中Matrix.md",
+    "graphics/webgl/0.webgl入门.md",
+    "年末述职.md",
+    "tmp",
     "note/graphics/image-7.png",
     "note/graphics/image-6.png",
     "note/graphics/渲染管线.md",
@@ -205,9 +214,7 @@
     "note/git/github 443超时问题.md",
     "note/前端工程化",
     "note/git/git stash 指令.md",
-    "note",
     "note/javascript/generator的使用.md",
-    "note/shell",
     "2023-07-24.md",
     "未命名 1.canvas",
     "未命名.canvas",
