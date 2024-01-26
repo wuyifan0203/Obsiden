@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "graphics/glsl/Base.md",
+                "file": "git/git config 指令.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,8 +85,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ecc1c72eaaa185e2",
@@ -102,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "graphics/glsl/Base.md",
+                "file": "git/git config 指令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "graphics/glsl/Base.md",
+                "file": "git/git config 指令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "graphics/glsl/Base.md"
+                "file": "git/git config 指令.md"
               }
             }
           },
           {
-            "id": "65250a4123d6f456",
+            "id": "eb3e6f06684336c9",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -177,8 +176,8 @@
   },
   "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
-    "graphics/Vector.md",
     "graphics/glsl/Base.md",
+    "graphics/Vector.md",
     "graphics/glsl",
     "graphics/渲染管线.md",
     "graphics/详解Three中Matrix.md",
