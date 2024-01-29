@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git/git config 指令.md",
+                "file": "graphics/glsl/内置函数.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ecc1c72eaaa185e2",
@@ -101,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git/git config 指令.md",
+                "file": "graphics/glsl/内置函数.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "git/git config 指令.md",
+                "file": "graphics/glsl/内置函数.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,12 +142,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git/git config 指令.md"
+                "file": "graphics/glsl/内置函数.md"
               }
             }
           },
           {
-            "id": "eb3e6f06684336c9",
+            "id": "2f6369e74b124864",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -177,6 +178,8 @@
   "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
     "graphics/glsl/Base.md",
+    "graphics/glsl/内置函数.md",
+    "git/git config 指令.md",
     "graphics/Vector.md",
     "graphics/glsl",
     "graphics/渲染管线.md",
