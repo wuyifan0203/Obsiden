@@ -85,8 +85,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ecc1c72eaaa185e2",
@@ -147,7 +146,7 @@
             }
           },
           {
-            "id": "2f6369e74b124864",
+            "id": "968797c69fc9eee1",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -175,15 +174,15 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "91b88905cf1c7cb8",
+  "active": "968797c69fc9eee1",
   "lastOpenFiles": [
-    "graphics/glsl/Base.md",
+    "graphics/详解Three中Matrix.md",
     "graphics/glsl/内置函数.md",
+    "graphics/glsl/Base.md",
     "git/git config 指令.md",
     "graphics/Vector.md",
     "graphics/glsl",
     "graphics/渲染管线.md",
-    "graphics/详解Three中Matrix.md",
     "graphics/webgl/0.webgl入门.md",
     "年末述职.md",
     "tmp",
