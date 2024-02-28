@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "graphics/glsl/内置函数.md",
+                "file": "graphics/interview/interview.md",
                 "mode": "source",
                 "source": false
               }
@@ -101,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "graphics/glsl/内置函数.md",
+                "file": "graphics/interview/interview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "graphics/glsl/内置函数.md",
+                "file": "graphics/interview/interview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "graphics/glsl/内置函数.md"
+                "file": "graphics/interview/interview.md"
               }
             }
           },
           {
-            "id": "968797c69fc9eee1",
+            "id": "7eb15a132f5fa61c",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -174,12 +174,17 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "968797c69fc9eee1",
+  "active": "91b88905cf1c7cb8",
   "lastOpenFiles": [
-    "graphics/详解Three中Matrix.md",
-    "graphics/glsl/内置函数.md",
     "graphics/glsl/Base.md",
+    "graphics/interview/interview.md",
+    "graphics/interview/graphics",
+    "graphics/interview/webgl",
+    "graphics/interview/math",
+    "graphics/interview",
+    "graphics/glsl/内置函数.md",
     "git/git config 指令.md",
+    "graphics/详解Three中Matrix.md",
     "graphics/Vector.md",
     "graphics/glsl",
     "graphics/渲染管线.md",
@@ -207,13 +212,9 @@
     "note/front/javascript/Promise.md",
     "note/front/node",
     "note/front/vue",
-    "note/front/javascript",
-    "note/front",
     "note/git/git 切换远程仓库.md",
     "note/node/macbook切换node版本.md",
-    "note/node",
     "note/git/github 443超时问题.md",
-    "note/前端工程化",
     "note/git/git stash 指令.md",
     "note/javascript/generator的使用.md",
     "2023-07-24.md",

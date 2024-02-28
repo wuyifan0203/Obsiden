@@ -27,4 +27,3 @@ $$\vec{a} \times \vec{b} =|\vec{a}|\ | \vec{b}| \sin \theta \vec{n} $$
 
 * 如果以 $\vec a$ 和 $\vec b$ 为边构成一个平行四边形，那么这两个向量外积的模长与这个平行四边形的面积相等
 * 判断在上侧还是在下侧
-$$N_v(T) = N_v(300) \left( \frac{T}{300K} \right)^{\frac{3}{2}}$$
