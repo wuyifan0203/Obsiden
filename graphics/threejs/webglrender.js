@@ -2,7 +2,7 @@
  * @Author: wuyifan0203 1208097313@qq.com
  * @Date: 2024-02-29 15:45:49
  * @LastEditors: wuyifan0203 1208097313@qq.com
- * @LastEditTime: 2024-03-06 15:55:45
+ * @LastEditTime: 2024-03-11 17:03:59
  * @FilePath: /Obsidian Vault/graphics/threejs/webglrender.js
  * Copyright (c) 2024 by wuyifan email: 1208097313@qq.com, All Rights Reserved.
  */
@@ -32,6 +32,7 @@ class WebGLRenderer {
         this.bindingStates = new WebGLBindingStates(this.gl, this.extensions, this.attributes, this.capabilities);
         this.geometries = new WebGLGeometries(this.gl, this.attributes, this.info, this.bindingStates);
         this.objects = new WebGLObjects(this.gl, this.geometries, this.attributes, this.info);
+        this.shadowMap = new WebGLShadowMap(this.gl, this.objects, this.capabilities)
 
         // 所使用的StateStack的存储栈
         this.renderStateStack = [];
@@ -45,6 +46,10 @@ class WebGLRenderer {
 
         // 是否排序过的标志
         this.sortObjects = true;
+        // 不透明物体的排序方法
+        this._opaqueSort = null
+        // 透明物体的排序方法
+        this._transparentSort = null
 
 
     }
@@ -85,7 +90,22 @@ class WebGLRenderer {
         this.renderListStack.push(this.currentRenderList);
 
         // 将物体投影到相机空间坐标系
-        projectObject(scene, camera, 0, this.sortObjects)
+        this.projectObject(scene, camera, 0, this.sortObjects)
+
+        this.currentRenderList.finish();
+
+        if (this.sortObjects === true) {
+            this.currentRenderList.sort(this._opaqueSort, this._transparentSort);
+        }
+
+        this.info.render.frame++;
+
+        // 做平面切割
+
+        const shadowsArray = this.currentRenderState.state.shadowsArray;
+        this.shadowMap.render(shadowsArray, scene, camera);
+
+
 
     }
 
@@ -119,6 +139,20 @@ class WebGLRenderer {
 
                         // 将坐标投影到webgl坐标系
                         _vector3.applyMatrix4(object.matrixWorld).applyMatrix4(vpMatrix);
+
+                    }
+
+                    if (Array.isArray(material)) {
+                        const groups = geometry.groups;
+                        for (const group of groups) {
+                            const groupMaterial = material[group.materialIndex];
+
+                            if (groupMaterial && groupMaterial.visible) {
+                                this.currentRenderList.push(object, geometry, groupMaterial, groupOrder, _vector3.z, group);
+                            }
+                        }
+                    } else if (material.visible) {
+                        this.currentRenderList.push(object, geometry, material, groupOrder, _vector3.z, null);
                     }
 
                 }
@@ -148,8 +182,9 @@ class WebGlInfo {
 
 class WebGLRenderState {
     constructor() {
-        this.lights = new WebGLLights();
+        // 用来保存光源；
         this.lightsArray = [];
+        // 用来保存能产生阴影的光源；
         this.shadowsArray = [];
     }
 
@@ -166,13 +201,6 @@ class WebGLRenderState {
         this.shadowsArray.push(shadowLight);
     }
 
-    setupLights(useLegacyLights) {
-        this.lights.setup(this.lightsArray, useLegacyLights);
-    }
-
-    setupLightsView(camera) {
-        this.lights.setupView(this.lightsArray, camera);
-    }
 }
 
 class WebGLObjects {
@@ -193,6 +221,7 @@ class WebGLObjects {
 
         // 判断这个物体有没有更新过，每帧只更新一次
         if (this.updateMap.get(bufferGeometry) !== frame) {
+            //  更新geometry的信息
             this.geometries.update(bufferGeometry);
             updateMap.set(bufferGeometry, frame);
         }
@@ -233,7 +262,7 @@ class WebGLGeometries {
         const geometryAttributes = geometry.attributes;
 
         for (const name of geometryAttributes) {
-
+            // 根据当前attribute的名字
             this.attributes.update(geometryAttributes[name], this._gl.ARRAY_BUFFER);
         }
     }
@@ -244,6 +273,8 @@ class WebGLAttributes {
     // 管理全局的buffer，创建，更新，删除，查找
     constructor(gl, capabilities) {
         this.buffers = new WeakMap();
+        this.gl = gl;
+        this.isWebGL2 = capabilities.isWebGL2;
     }
 
     _createBuffer(attribute, bufferType) {
@@ -260,6 +291,26 @@ class WebGLAttributes {
 
     _updateBuffer() {
         // 更新
+        const array = attribute.array;
+        const updateRanges = attribute.updateRanges;
+
+        this.gl.bindBuffer(bufferType, buffer);
+
+        if (updateRanges.length === 0) {
+            // 全部更新
+            this.gl.bufferSubData(bufferType, 0, array);
+        } else {
+            // 局部更新
+            for (const range of updateRanges) {
+                if (isWebGL2) {
+                    //
+                } else {
+                    //
+                }
+            }
+            this.updateRanges.length = 0;
+        }
+
     }
 
     update(attribute, bufferType) {
@@ -321,6 +372,193 @@ class WebGLExtensions {
 
 class WebGLBindingStates {
     constructor(gl, extensions, attributes, camera) {
+
+    }
+}
+
+class WebGLRenderList {
+    constructor(gl, extensions, attributes, camera) {
+        this.renderItems = [];
+        this.renderItemsIndex = 0;
+
+        // 不透明的物体
+        this.opaque = [];
+        // 透明的物体
+        this.transparent = [];
+        // 能透射的物体
+        this.transmissive = [];
+    }
+
+    init() {
+        this.renderItems.length = 0;
+        this.renderItemsIndex = 0;
+        this.opaque.length = 0;
+        this.transparent.length = 0;
+        this.transmissive.length = 0;
+    }
+
+    push(object, geometry, material, groupOrder, z, group) {
+        const renderItem = this.getNextRenderItem(object, geometry, material, groupOrder, z, group);
+
+        // 模拟透射效果的，如薄布或玻璃等材质的透光效果，类似于透明物体，但是不同于透明物体
+        if (material.transmissive) {
+            this.transmissive.push(renderItem);
+        } else if (material.transparent) {
+            this.transparent.push(renderItem);
+        } else {
+            this.opaque.push(renderItem);
+        }
+
+    }
+
+
+    // 生成一个软连接列表
+    getNextRenderItem(object, geometry, material, groupOrder, z, group) {
+
+        let renderItem = this.renderItems[this.renderItemsIndex];
+
+        // 对内存进行复用
+        if (renderItem === undefined) {
+            renderItem = {
+                id: object.id,
+                object,
+                geometry,
+                material,
+                groupOrder,
+                renderOrder: object.renderOrder,
+                z,
+                group
+            }
+
+            this.renderItems[this.renderItemsIndex] = renderItem;
+        } else {
+            renderItem.id = object.id;
+            renderItem.object = object;
+            renderItem.geometry = geometry;
+            renderItem.material = material;
+            renderItem.groupOrder = groupOrder;
+            renderItem.renderOrder = object.renderOrder;
+            renderItem.z = z;
+            renderItem.group = group;
+
+        }
+
+        this.renderItemsIndex++;
+        return renderItem;
+    }
+
+    finish() {
+        // 释放列表内没有用到的元素
+        for (let i = this.renderItemsIndex, l = this.renderItems; i < l; i++) {
+            const renderItem = this.renderItems[i];
+
+            if (renderItem.id === null) break;
+            renderItem.id = null;
+            renderItem.object = null;
+            renderItem.geometry = null;
+            renderItem.material = null;
+            renderItem.group = null;
+        }
+    }
+
+    sort(customOpaqueSort, customTransparentSort) {
+        if (this.opaque.length > 1) {
+            this.opaque.sort(customOpaqueSort || painterSortStable);
+        }
+        if (transmissive.length > 1) {
+            transmissive.sort(customTransparentSort || reversePainterSortStable);
+        }
+        if (transparent.length > 1) {
+            transparent.sort(customTransparentSort || reversePainterSortStable);
+        }
+    }
+
+}
+
+/** 
+ * 这里对不透明物体的排序顺序的优先级做的排序
+ * 优先渲染groupOrder和renderOrder是确保渲染流程中逻辑上的正确性和优先级
+ * 在上述情况相同的情况下考虑材料
+ * 确保相同材料的对象被连续渲染。这减少了渲染过程中的状态切换次数，从而优化了渲染性能。
+ * 在材料相同的情况下考虑深度，先渲染远离相机的物体
+ * 最后考虑的是先后添加顺序（默认id是根据add的先后自增）
+*/
+function painterSortStable(a, b) {
+    if (a.groupOrder !== b.groupOrder) {
+        return a.groupOrder - b.groupOrder;
+    } else if (a.renderOrder !== b.renderOrder) {
+        return a.renderOrder - b.renderOrder;
+    } else if (a.material.id !== b.material.id) {
+        return a.material.id - b.material.id;
+    } else if (a.z !== b.z) {
+        return a.z - b.z;
+    } else {
+        return a.id - b.id;
+    }
+}
+
+/**
+ * 这里对透明物体的排序顺序的优先级做的排序
+ * 为什么这次没有对材料做排序
+ * 首先最重要的是保证自定义的渲染顺序的正确性
+ * 其次为了让物体透明度混合的正确，需要采用画家算法，即从远绘制到近
+ * 可以对材料的id排序进行忽略，因为侧重点在渲染的正确性上
+ */
+function reversePainterSortStable(a, b) {
+    if (a.groupOrder !== b.groupOrder) {
+        return a.groupOrder - b.groupOrder;
+    } else if (a.renderOrder !== b.renderOrder) {
+        return a.renderOrder - b.renderOrder;
+    } else if (a.z !== b.z) {
+        return b.z - a.z;
+    } else {
+        return a.id - b.id;
+    }
+}
+
+class WebGLShadowMap {
+    constructor(renderer, objects, capabilities) {
+        this._renderer = renderer;
+        this._objects = objects;
+        this._shadowMapSize = Vector2();
+        ///...
+    }
+    render(lights, objects, camera) {
+        if (lights.length === 0) return;
+
+        const currentRenderTarget = this._renderer.getRenderTarget();
+        const activeCubeFace = this._renderer.getActiveCubeFace();
+        const activeMipmapLevel = this._renderer.getActiveMipmapLevel();
+
+        const _state = this._renderer.state;
+        _state.setBlending(NoBlending);
+        _state.buffers.color.setClear(1, 1, 1, 1);
+        _state.buffers.depth.setTest(true);
+        _state.setScissorTest(false);
+
+        for (let i = 0, il = lights.length; i < il; i++) {
+            const light = lights[i];
+            const shadow = light.shadow;
+
+            this._shadowMapSize.copy(shadow.mapSize);
+
+            if (shadow.map === null) {
+
+                shadow.map = new WebGLRenderTarget()
+                shadow.camera.updateProjectionMatrix();
+            }
+
+            this._renderer.setRenderTarget(shadow.map);
+            this._renderer.clear();
+
+        }
+
+
+    }
+}
+
+class WebGLBackground {
+    constructor(renderer, scene, camera) {
 
     }
 }
