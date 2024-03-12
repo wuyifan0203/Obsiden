@@ -2,7 +2,7 @@
  * @Author: wuyifan0203 1208097313@qq.com
  * @Date: 2024-02-29 15:45:49
  * @LastEditors: wuyifan0203 1208097313@qq.com
- * @LastEditTime: 2024-03-11 17:03:59
+ * @LastEditTime: 2024-03-12 17:46:10
  * @FilePath: /Obsidian Vault/graphics/threejs/webglrender.js
  * Copyright (c) 2024 by wuyifan email: 1208097313@qq.com, All Rights Reserved.
  */
@@ -28,11 +28,14 @@ class WebGLRenderer {
 
         this.info = new WebGlInfo(this.gl);
 
+        this.state = new WebGLState(this.gl, this.extensions, this.capabilities);
+
         this.attributes = new WebGLAttributes(this.gl, this.capabilities);
         this.bindingStates = new WebGLBindingStates(this.gl, this.extensions, this.attributes, this.capabilities);
         this.geometries = new WebGLGeometries(this.gl, this.attributes, this.info, this.bindingStates);
         this.objects = new WebGLObjects(this.gl, this.geometries, this.attributes, this.info);
-        this.shadowMap = new WebGLShadowMap(this.gl, this.objects, this.capabilities)
+        this.shadowMap = new WebGLShadowMap(this.gl, this.objects, this.capabilities);
+        this.background = new WebGLBackground(this, this.state, this, this.objects);
 
         // 所使用的StateStack的存储栈
         this.renderStateStack = [];
@@ -105,6 +108,21 @@ class WebGLRenderer {
         const shadowsArray = this.currentRenderState.state.shadowsArray;
         this.shadowMap.render(shadowsArray, scene, camera);
 
+        this.background.render(this.currentRenderList, scene);
+
+        // 灯光初始化赋值，根据类型做一些不同的处理
+        this.currentRenderState.setupLights();
+
+        // 根据相机类型做渲染
+        if (camera.isArrayCamera) {
+            const cameras = camera.cameras;
+            for (let i = 0, l = cameras.length; i < l; i++) {
+                const camera2 = cameras[i];
+                this.renderScene(this.currentRenderList, scene, camera2, camera2.viewport);
+            }
+        } else {
+            this.renderScene(this.currentRenderList, scene, camera);
+        }
 
 
     }
@@ -165,6 +183,32 @@ class WebGLRenderer {
             this.projectObject(object.children[j], camera, groupOrder, sortObjects);
         }
     }
+
+    renderScene(currentRenderList, scene, camera, viewport) {
+        const opaqueObjects = currentRenderList.opaque;
+        const transmissiveObjects = currentRenderList.transmissive;
+        const transparentObjects = currentRenderList.transparent;
+
+        currentRenderState.setupLightsView(camera);
+
+        if (transmissiveObjects.length > 0) {
+            renderTransmissivePass(opaqueObjects, transmissiveObjects, scene, camera);
+        }
+
+        if (viewport) {
+            this.state.viewport(viewport)
+        }
+
+
+    }
+
+    renderObjects() {
+
+    }
+
+    renderObject(object, scene, camera, group) {
+
+    }
 }
 
 class WebGlInfo {
@@ -199,6 +243,21 @@ class WebGLRenderState {
 
     pushShadow(shadowLight) {
         this.shadowsArray.push(shadowLight);
+    }
+
+    setupLights() {
+        // 灯光初始化赋值，
+        // 根据类型做一些不同的处理
+        // 颜色，光强，角度，最大距离，衰减程度等
+    }
+
+    setupLightsView(camera) {
+        // 根据光线类型做出不同的逻辑处理
+        // 总体都会
+        // 设置光线的位置
+        // 将光线位置变换到视图矩阵下（转换到相机坐标系）
+        // 赋值光线的方向
+        // 将光线方向变换到视图矩阵（转换到相机坐标系）
     }
 
 }
@@ -521,6 +580,8 @@ class WebGLShadowMap {
         this._renderer = renderer;
         this._objects = objects;
         this._shadowMapSize = Vector2();
+        this._viewport = Vector4();
+
         ///...
     }
     render(lights, objects, camera) {
@@ -551,14 +612,76 @@ class WebGLShadowMap {
             this._renderer.setRenderTarget(shadow.map);
             this._renderer.clear();
 
+            //根据视口个数进行渲染
+            for (let vp = 0, il = shadow.getViewportCount(); vp < il; vp++) {
+
+                const viewport = shadow.getViewport(vp);
+
+                this._viewport.copy(viewport);
+
+                renderObject(scene, camera, shadow.camera, light, this.type);
+
+            }
+            shadow.needsUpdate = false;
         }
 
-
+        scope.needsUpdate = false;
+        _renderer.setRenderTarget(currentRenderTarget, activeCubeFace, activeMipmapLevel);
     }
 }
 
 class WebGLBackground {
-    constructor(renderer, scene, camera) {
+    constructor(renderer, state, object, alpha) {
+        this.renderer = renderer;
+        this.state = state;
+        this.object = object;
+        this.alpha = alpha;
+    }
 
+    render(renderList, scene) {
+        // 根据scene background 的类型做出不同的行为
+
+        if (scene.background === null) {
+            this.renderer.setClearColor('#000000', this.alpha);
+        } else if (scene.background?.isColor === true) {
+            this.renderer.setClearColor(scene.background, this.alpha);
+        }
+
+        if (this.renderer.autoClear === true) {
+            this.renderer.clear(this.renderer.autoClearColor, this.renderer.autoClearDepth, this.renderer.autoClearStencil);
+        }
+
+        if (scene.background?.isCubeTexture === true) {
+            const boxMesh = new Mesh(new boxGeometry(1, 1, 1), new ShaderMaterial({ map: scene.background }))
+            renderList.unshift(boxMesh, boxMesh.geometry, boxMesh.material, 0, 0, null);
+        } else if (scene.background?.isTexture === true) {
+            const planeMesh = new Mesh(new PlaneGeometry(1, 1), new ShaderMaterial({ map: scene.background }))
+            renderList.unshift(planeMesh, planeMesh.geometry, planeMesh.material, 0, 0, null);
+        }
+
+    }
+}
+
+class WebGLState {
+    /**
+     * 这个类是webgl的状态机
+     * 作用:控制webgl 的所有状态
+     * viewport 绑定视口
+     * Blending 混合
+     * CullFace 面剔除
+     * depthTest 深度测试
+     * depthWrite
+     * polygonOffset
+     * stencil
+     * 等等 
+    */
+    constructor(gl, extension, capabilities) {
+        this.gl = gl;
+        this.extension = extension;
+        this.capabilities = capabilities;
+    }
+
+    viewport(viewport) {
+        this.gl.viewport(viewport.x, viewport.y, viewport.z, viewport.w);
     }
 }
