@@ -2,7 +2,7 @@
  * @Author: wuyifan0203 1208097313@qq.com
  * @Date: 2024-02-29 15:45:49
  * @LastEditors: wuyifan0203 1208097313@qq.com
- * @LastEditTime: 2024-03-12 17:46:10
+ * @LastEditTime: 2024-03-13 17:58:15
  * @FilePath: /Obsidian Vault/graphics/threejs/webglrender.js
  * Copyright (c) 2024 by wuyifan email: 1208097313@qq.com, All Rights Reserved.
  */
@@ -195,18 +195,61 @@ class WebGLRenderer {
             renderTransmissivePass(opaqueObjects, transmissiveObjects, scene, camera);
         }
 
-        if (viewport) {
-            this.state.viewport(viewport)
+        if (viewport) this.state.viewport(viewport);
+
+        // 先渲染不透明物体
+        if (opaqueObjects.length > 0) this.renderObjects(opaqueObjects, scene, camera);
+        // 再渲染透光物体
+        if (transmissiveObjects.length > 0) this.renderObjects(transmissiveObjects, scene, camera);
+        // 最后渲染透明物体
+        if (transparentObjects.length > 0) this.renderObjects(transparentObjects, scene, camera);
+
+        // 在渲染下一帧前，恢复到默认值
+        this.state.buffers.depth.setTest(true);
+        this.state.buffers.depth.setMask(true);
+        this.state.buffers.color.setMask(true);
+
+        this.state.setPolygonOffset(false);
+    }
+
+    renderObjects(renderList, scene, camera) {
+        for (let j = 0, k = renderList.length; j < k; j++) {
+            const { object, geometry, material, group } = renderList[j];
+
+            if (object.layers.test(camera.layers)) {
+                this.renderObject(object, scene, camera, geometry, material, group);
+            }
         }
 
-
     }
 
-    renderObjects() {
+    renderObject(object, scene, camera, geometry, material, group) {
+        object.onBeforeRender(this, scene, camera, geometry, material, group);
 
+        // 生成 V M 矩阵
+        object.modelViewMatrix.multiplyMatrices(camera.matrixWorldInverse, object.matrixWorld);
+        // 更新物体的normalMatrix
+        object.normalMatrix.getNormalMatrix(object.modelViewMatrix);
+
+        material.onBeforeRender(this, scene, camera, geometry, material, group);
+
+        // 是否强制单通道渲染
+        if (material.transparent === true && material.side === DoubleSide && material.forceSinglePass === true) {
+            material.side = BackSide;
+            material.needsUpdate = true;
+            this.renderBufferDirect(camera, scene, geometry, material, object, group);
+
+            material.side = FrontSide;
+            material.needsUpdate = true;
+            this.renderBufferDirect(camera, scene, geometry, material, object, group);
+
+            material.side = DoubleSide;
+        } else {
+            this.renderBufferDirect(camera, scene, geometry, material, object, group);
+        }
     }
 
-    renderObject(object, scene, camera, group) {
+    renderBufferDirect(camera, scene, geometry, material, object, group) {
 
     }
 }
@@ -679,9 +722,25 @@ class WebGLState {
         this.gl = gl;
         this.extension = extension;
         this.capabilities = capabilities;
+
+        // 帧缓冲区
+        this.buffers = {
+            color: new ColorBuffer(),
+            depth: new DepthBuffer(),
+            stencil: new StencilBuffer()
+        }
     }
 
     viewport(viewport) {
         this.gl.viewport(viewport.x, viewport.y, viewport.z, viewport.w);
+    }
+
+    setPolygonOffset(polygonOffset, factor, units) {
+        if (polygonOffset) {
+            this.gl.enable(this.gl.POLYGON_OFFSET_FILL);
+            this.gl.polygonOffset(factor, units)
+        } else {
+            this.gl.disable(this.gl.POLYGON_OFFSET_FILL);
+        }
     }
 }
