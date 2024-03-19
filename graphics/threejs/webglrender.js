@@ -2,7 +2,7 @@
  * @Author: wuyifan0203 1208097313@qq.com
  * @Date: 2024-02-29 15:45:49
  * @LastEditors: wuyifan0203 1208097313@qq.com
- * @LastEditTime: 2024-03-13 17:58:15
+ * @LastEditTime: 2024-03-19 17:12:44
  * @FilePath: /Obsidian Vault/graphics/threejs/webglrender.js
  * Copyright (c) 2024 by wuyifan email: 1208097313@qq.com, All Rights Reserved.
  */
@@ -27,13 +27,17 @@ class WebGLRenderer {
         this.extensions.init(this.capabilities);
 
         this.info = new WebGlInfo(this.gl);
+        this.properties = new WebGLProperties()
 
         this.state = new WebGLState(this.gl, this.extensions, this.capabilities);
+
+        this.textures = new WebGLTextures();
 
         this.attributes = new WebGLAttributes(this.gl, this.capabilities);
         this.bindingStates = new WebGLBindingStates(this.gl, this.extensions, this.attributes, this.capabilities);
         this.geometries = new WebGLGeometries(this.gl, this.attributes, this.info, this.bindingStates);
         this.objects = new WebGLObjects(this.gl, this.geometries, this.attributes, this.info);
+        this.programCache = new WebGLPrograms(this, this.extensions, this.capabilities, this.bindingStates)
         this.shadowMap = new WebGLShadowMap(this.gl, this.objects, this.capabilities);
         this.background = new WebGLBackground(this, this.state, this, this.objects);
 
@@ -250,6 +254,78 @@ class WebGLRenderer {
     }
 
     renderBufferDirect(camera, scene, geometry, material, object, group) {
+        // 判断是否发生奇异变换（镜像变换，会导致法向量指向内）
+        const frontFaceCW = object.isMesh && (object.matrixWorld.determinant() < 0);
+
+        const program = setProgram(camera, scene, geometry, material, object);
+    }
+
+    setProgram(camera, scene, geometry, material, object) {
+        this.textures.resetTextureUnits();
+
+        const fog = scene.fog;
+        const env = material.env || scene.environment;
+
+        const materialProperties = this.properties.get(material);
+        const lights = this.currentRenderState.state.lights;
+
+        let needsProgramChange = false;
+
+        if (material.version === materialProperties.__version) {
+            if (materialProperties.needLights && (materialProperties.lightStateVersion !== light.state.version)) {
+                needsProgramChange = true;
+            } else if (materialProperties.env !== env) {
+                needsProgramChange = true;
+            } else if (material.fog === true && materialProperties.fog !== fog) {
+                needsProgramChange = true;
+            }
+        } else {
+            needsProgramChange = true;
+            materialProperties.__version = material.version;
+        }
+
+        let program = materialProperties.currentProgram;
+
+        if (needsProgramChange === true) {
+            program = this.getProgram(material, scene, object);
+        }
+    }
+
+    getProgram(material, scene, object) {
+        const materialProperties = properties.get(material);
+
+        const lights = currentRenderState.state.lights;
+        const shadowsArray = currentRenderState.state.shadowsArray;
+
+        const lightsStateVersion = lights.state.version;
+
+        const parameters = this.programCache.getParameters(material, lights.state, shadowsArray, scene, object);
+        const programCacheKey = this.programCache.getProgramCacheKey(parameters);
+
+        let programs = materialProperties.programs;
+
+        materialProperties.environment = scene.environment;
+        materialProperties.fog = scene.fog;
+        materialProperties.envMap = material.envMap;
+
+        if (programs === undefined) {
+            // 说明这个是一个新的材料，
+            material.addEventListener(onDispose, onMaterialDispose);
+
+            programs = new Map();
+            materialProperties.programs = programs;
+        }
+
+        let program = programs.get(programCacheKey);
+
+        if (program !== undefined) {
+            if (materialProperties.currentProgram === program && materialProperties.lightStateVersion === lightsStateVersion) {
+                return program;
+            }
+        } else {
+            parameters.uniforms = this.programCache.getUniforms(material);
+            // cy
+        }
 
     }
 }
@@ -742,5 +818,120 @@ class WebGLState {
         } else {
             this.gl.disable(this.gl.POLYGON_OFFSET_FILL);
         }
+    }
+}
+
+class WebGLTextures {
+    constructor() {
+        this.textureUnits = 0;
+    }
+
+    resetTextureUnits() {
+        this.textureUnits = 0;
+    }
+}
+
+class WebGLProperties {
+    constructor() {
+        this.properties = new WeakMap();
+    }
+
+    get(object) {
+        let map = this.properties.get(object);
+        if (map === undefined) {
+            map = {};
+            this.properties.set(object, map);
+        }
+        return map;
+    }
+
+    remove(object) {
+        this.properties.delete(object);
+    }
+
+    update(object, key, value) {
+        this.properties.get(object)[key] = value;
+    }
+
+    dispose() {
+        this.properties = new WeakMap();
+    }
+}
+
+class WebGLPrograms {
+    constructor(render, extensions, capabilities, bindingStates) {
+        this.shaderIDs = {
+            MeshDepthMaterial: 'depth',
+            MeshDistanceMaterial: 'distanceRGBA',
+            MeshNormalMaterial: 'normal',
+            MeshBasicMaterial: 'basic',
+            MeshLambertMaterial: 'lambert',
+            MeshPhongMaterial: 'phong',
+            MeshToonMaterial: 'toon',
+            MeshStandardMaterial: 'physical',
+            MeshPhysicalMaterial: 'physical',
+            MeshMatcapMaterial: 'matcap',
+            LineBasicMaterial: 'basic',
+            LineDashedMaterial: 'dashed',
+            PointsMaterial: 'points',
+            ShadowMaterial: 'shadow',
+            SpriteMaterial: 'sprite'
+        };
+    }
+
+    getParameters(material, lights, shadow, scene, object) {
+        // 根据材料的类型，映射成不同的shader类型
+        const shaderID = this.shaderIDs[material.type];
+
+        const shader = ShaderLib[shaderID]
+
+        // 生成在最终的js对象信息(有很多参数)
+        const parameters = {
+            shaderID,
+
+            vertexShader: shader.vertexShader ?? material.vertexShader,
+            fragmentShader: shader.fragmentShader ?? material.fragmentShader,
+            defines: material.defines,
+
+            precision: precision,
+
+            map,
+            envMap,
+            lightMap,
+            // ...
+
+            fog: scene.fog
+        }
+
+        return parameters;
+    }
+
+    // 生成program的key，用于判断这个program是否编译过，避免重复编译
+    getProgramCacheKey(parameters) {
+        const array = [];
+        array.push(parameters.shaderID);
+
+        if (parameters.defines !== undefined) {
+            for (const name in parameters.defines) {
+                array.push(name);
+                array.push(parameters.defines[name]);
+            }
+        }
+
+        return array.join();
+    }
+
+    getUniforms(material) {
+        const shaderID = this.shaderIDs[material.type];
+
+        let uniforms;
+
+        if (shaderID) {
+            uniforms = UniformsUtils.clone(ShaderLib[shaderID].uniforms);
+        } else {
+            uniforms = material.uniforms;
+        }
+
+        return uniforms;
     }
 }
