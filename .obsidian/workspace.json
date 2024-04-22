@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "72016ecdd9b5fdca",
+        "id": "afa12906f5095122",
         "type": "tabs",
         "children": [
           {
-            "id": "91b88905cf1c7cb8",
+            "id": "cf311e9b74057d44",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "graphics/interview/interview.md",
+                "file": "English/Words come from lyrics.md",
                 "mode": "source",
                 "source": false
               }
@@ -101,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "graphics/interview/interview.md",
+                "file": "English/Words come from lyrics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "graphics/interview/interview.md",
+                "file": "English/Words come from lyrics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "graphics/interview/interview.md"
+                "file": "English/Words come from lyrics.md"
               }
             }
           },
           {
-            "id": "7eb15a132f5fa61c",
+            "id": "f6d704bbd93efbe9",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -174,10 +174,14 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "91b88905cf1c7cb8",
+  "active": "cf311e9b74057d44",
   "lastOpenFiles": [
-    "graphics/glsl/Base.md",
+    "English/Words come from lyrics.md",
+    "未命名 1.md",
+    "未命名.md",
     "graphics/interview/interview.md",
+    "English",
+    "graphics/glsl/Base.md",
     "graphics/interview/graphics",
     "graphics/interview/webgl",
     "graphics/interview/math",
@@ -211,7 +215,6 @@
     "note/front/javascript/generator的使用.md",
     "note/front/javascript/Promise.md",
     "note/front/node",
-    "note/front/vue",
     "note/git/git 切换远程仓库.md",
     "note/node/macbook切换node版本.md",
     "note/git/github 443超时问题.md",
