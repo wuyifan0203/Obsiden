@@ -36,3 +36,17 @@ screw someone over 欺骗某人
 
 >Now and then I think of all the times you screwed me over(偶尔想起你骗我的时候)
 >《somebody that i used to know》
+
+## certain
+
+- adj.必然的，必定的；确定的，无疑的；某个，特定的；某位，一位叫……的；一定程度上的，有点儿
+- pron.某些，某几个
+- n.（Certain）（美、法）塞尔坦（人名）
+## addicted
+- adj.（吸毒）成瘾的，上瘾的；入迷的，着迷的
+- v.使上瘾，使沉迷（addict 的过去式和过去分词形式）
+
+get addicted to something 对某物上瘾
+
+>You can get addicted to a certain kind of sadness(你可以沉迷于某些悲痛中)
+>《somebody that i used to know》
