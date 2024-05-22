@@ -99,12 +99,16 @@ $$
 $$
 \text{left}_{\text{effective}} = \frac{\text{left}}{\text{zoom}}
 $$
+
 $$
 \text{right}_{\text{effective}} = \frac{\text{right}}{\text{zoom}}
 $$
+
+
 $$
 \text{top}_{\text{effective}} = \frac{\text{top}}{\text{zoom}}
 $$
+
 $$
 \text{bottom}_{\text{effective}} = \frac{\text{bottom}}{\text{zoom}}
 $$
@@ -142,7 +146,7 @@ $$
 假设透视校正矩阵为：
 
 $$
-M_{\text{persp\_correct}} = \begin{bmatrix}
+M_{\text{persp correct}} = \begin{bmatrix}
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & A & B \\
@@ -155,7 +159,7 @@ $$
 我们可以将正交投影矩阵乘以透视校正矩阵来得到透视投影矩阵：
 
 $$
-P_{\text{persp}} = P_{\text{ortho}} \cdot M_{\text{persp\_correct}}
+P_{\text{persp}} = P_{\text{ortho}} \cdot M_{\text{persp correct}}
 $$
 
 #### 计算 \( A \) 和 \( B \)
@@ -176,7 +180,7 @@ $$
 将这些值代入透视校正矩阵，并进行矩阵乘法：
 
 $$
-M_{\text{persp\_correct}} = \begin{bmatrix}
+M_{\text{persp correct}} = \begin{bmatrix}
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & \frac{\text{far} + \text{near}}{\text{near} - \text{far}} & \frac{2 \cdot \text{far} \cdot \text{near}}{\text{near} - \text{far}} \\
