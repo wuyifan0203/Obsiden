@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "graphics/Vector.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7db5de82d92716d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "front/javascript/Promise.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -114,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "front/javascript/Promise.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "graphics/详解Three中Matrix.md",
+                "file": "front/javascript/Promise.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,12 +166,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "graphics/详解Three中Matrix.md"
+                "file": "front/javascript/Promise.md"
               }
             }
           },
           {
-            "id": "9b88fd8579a3fe1b",
+            "id": "c8ad6d59eaef45bb",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -187,25 +199,28 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9b88fd8579a3fe1b",
+  "active": "7db5de82d92716d9",
   "lastOpenFiles": [
+    "front/javascript/generator的使用.md",
     "English/Words come from lyrics.md",
-    "graphics/详解Three中Matrix.md",
     "graphics/Vector.md",
+    "graphics/详解Three中Matrix.md",
+    "graphics/resource/FragmentShader.png",
+    "graphics/glsl/Base.md",
+    "graphics/glsl/内置函数.md",
     "graphics/interview/interview.md",
+    "graphics/渲染管线.md",
+    "git/git stash 指令.md",
+    "graphics/webgl/0.webgl入门.md",
     "未命名 1.md",
     "未命名.md",
     "English",
-    "graphics/glsl/Base.md",
     "graphics/interview/graphics",
     "graphics/interview/webgl",
     "graphics/interview/math",
     "graphics/interview",
-    "graphics/glsl/内置函数.md",
     "git/git config 指令.md",
     "graphics/glsl",
-    "graphics/渲染管线.md",
-    "graphics/webgl/0.webgl入门.md",
     "年末述职.md",
     "tmp",
     "note/graphics/image-7.png",
@@ -219,7 +234,6 @@
     "note/graphics/image-5.png",
     "note/shell/shell基本语法.md",
     "resource/Pasted image 20230823155154.png",
-    "resource/Pasted image 20230823155113.png",
     "resource",
     "note/graphics/Vector.md",
     "note/graphics",
@@ -233,9 +247,7 @@
     "note/git/github 443超时问题.md",
     "note/git/git stash 指令.md",
     "note/javascript/generator的使用.md",
-    "2023-07-24.md",
     "未命名 1.canvas",
-    "未命名.canvas",
-    "2023-05-22.md"
+    "未命名.canvas"
   ]
 }

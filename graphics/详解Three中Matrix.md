@@ -1,9 +1,3 @@
-<!--
- * @Date: 2023-12-08 17:41:14
- * @LastEditors: wuyifan wuyifan@max-optics.com
- * @LastEditTime: 2023-12-12 20:58:02
- * @FilePath: /Obsidian Vault/graphics/详解Three中Matrix.md
--->
 
 # Threejs 中各种矩阵的详解
 
