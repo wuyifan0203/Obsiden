@@ -20,4 +20,8 @@
 5. 计算VP矩阵，生成视椎体，为视椎体剔除做准备
 6. 以场景作为key去RenderList获取当前渲染列表，没有则初始化，推到渲染列表栈里
 7. 将物体投影到相机坐标系中，其中内部做了很多事
-    1. 先根据visible进行剔除  
+    1. 先根据物体visible进行剔除  ,再根据物体Layer剔除
+    2. 对不同类型物体做差异化处理，group对整体的renderOrder赋值，Light则推到当前的state，根据是否产生阴影，创建ShadowMap，Mesh，Line，Points会视椎体剔除，在根据material的visible做剔除
+    3. Mesh，Line，Points计算外接球球心的深度Z值，传递给RenderList
+    4. 递归遍历
+  8. 

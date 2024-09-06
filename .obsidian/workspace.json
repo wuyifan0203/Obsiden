@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "cf311e9b74057d44",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "English/Words come from lyrics.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "96c5048651b84bf9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "graphics/Vector.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "7db5de82d92716d9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "front/javascript/Promise.md",
+                "file": "git/git stash 指令.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "front/javascript/Promise.md",
+                "file": "git/git stash 指令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "front/javascript/Promise.md",
+                "file": "git/git stash 指令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,12 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "front/javascript/Promise.md"
+                "file": "git/git stash 指令.md"
               }
             }
           },
           {
-            "id": "c8ad6d59eaef45bb",
+            "id": "db97a8035111f451",
             "type": "leaf",
             "state": {
               "type": "tasks_timeline_view",
@@ -199,17 +174,20 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "7db5de82d92716d9",
+  "active": "db97a8035111f451",
   "lastOpenFiles": [
-    "front/javascript/generator的使用.md",
-    "English/Words come from lyrics.md",
+    "graphics/threejs/render.md",
     "graphics/Vector.md",
+    "English/Words come from lyrics.md",
     "graphics/详解Three中Matrix.md",
+    "graphics/渲染管线.md",
+    "front/vue/keep-alive 的使用详解.md",
+    "front/javascript/Promise.md",
+    "front/javascript/generator的使用.md",
     "graphics/resource/FragmentShader.png",
     "graphics/glsl/Base.md",
     "graphics/glsl/内置函数.md",
     "graphics/interview/interview.md",
-    "graphics/渲染管线.md",
     "git/git stash 指令.md",
     "graphics/webgl/0.webgl入门.md",
     "未命名 1.md",
@@ -244,9 +222,6 @@
     "note/front/node",
     "note/git/git 切换远程仓库.md",
     "note/node/macbook切换node版本.md",
-    "note/git/github 443超时问题.md",
-    "note/git/git stash 指令.md",
-    "note/javascript/generator的使用.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
