@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git/git stash 指令.md",
+                "file": "shell/shell基本语法.md",
                 "mode": "source",
                 "source": false
               }
@@ -101,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git/git stash 指令.md",
+                "file": "shell/shell基本语法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "git/git stash 指令.md",
+                "file": "shell/shell基本语法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,20 +141,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git/git stash 指令.md"
+                "file": "shell/shell基本语法.md"
               }
-            }
-          },
-          {
-            "id": "db97a8035111f451",
-            "type": "leaf",
-            "state": {
-              "type": "tasks_timeline_view",
-              "state": {}
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -174,21 +166,22 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "db97a8035111f451",
+  "active": "7db5de82d92716d9",
   "lastOpenFiles": [
-    "graphics/threejs/render.md",
     "graphics/Vector.md",
-    "English/Words come from lyrics.md",
-    "graphics/详解Three中Matrix.md",
     "graphics/渲染管线.md",
-    "front/vue/keep-alive 的使用详解.md",
-    "front/javascript/Promise.md",
-    "front/javascript/generator的使用.md",
-    "graphics/resource/FragmentShader.png",
+    "graphics/详解Three中Matrix.md",
+    "graphics/interview/interview.md",
     "graphics/glsl/Base.md",
     "graphics/glsl/内置函数.md",
-    "graphics/interview/interview.md",
+    "front/javascript/Promise.md",
+    "front/javascript/generator的使用.md",
+    "front/node/macbook切换node版本.md",
     "git/git stash 指令.md",
+    "graphics/threejs/render.md",
+    "English/Words come from lyrics.md",
+    "front/vue/keep-alive 的使用详解.md",
+    "graphics/resource/FragmentShader.png",
     "graphics/webgl/0.webgl入门.md",
     "未命名 1.md",
     "未命名.md",
@@ -221,7 +214,6 @@
     "note/front/javascript/Promise.md",
     "note/front/node",
     "note/git/git 切换远程仓库.md",
-    "note/node/macbook切换node版本.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
