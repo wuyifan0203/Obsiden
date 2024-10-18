@@ -13,26 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "shell/shell基本语法.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ba5764eb0b41557b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "interview/广州柏视.md",
+                "file": "graphics/glsl/内置函数.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -114,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "interview/广州柏视.md",
+                "file": "graphics/glsl/内置函数.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "interview/广州柏视.md",
+                "file": "graphics/glsl/内置函数.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "interview/广州柏视.md"
+                "file": "graphics/glsl/内置函数.md"
               }
             }
           }
@@ -179,7 +166,7 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "ba5764eb0b41557b",
+  "active": "7db5de82d92716d9",
   "lastOpenFiles": [
     "shell/shell基本语法.md",
     "interview/广州柏视.md",
