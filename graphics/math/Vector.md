@@ -13,6 +13,7 @@ $$\vec{a} \cdot \vec{b} =|\vec{a}|\ |\vec{b}| \cos \theta $$
 * 表示两个向量的相似程度，判断为同向还是异向 ，为0 时则垂直
 * 求两向量夹角
 
+![vector dot](vector_dot.webp)
 ## 叉乘（外积）
 
 向量叉积使用 $\vec{a}\times\vec{b}$ 表示，返回一个矢量

@@ -55,7 +55,7 @@ vertex.applyMatrix4(object2.matrixWorldInverse) // 转化为模型object2坐标�
 
 投影矩阵分为两种，正交投影和透视投影。一般用于将三维坐标转换为视锥体坐标系下的坐标。
 
-![Alt text](./resource/PO.webp)
+![Alt text](PO.webp)
 
 ```javascript
 // v为世界坐标系下任意一点值为(x,y,z)

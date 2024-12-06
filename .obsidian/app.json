@@ -8,5 +8,6 @@
   "readableLineLength": false,
   "showIndentGuide": true,
   "rightToLeft": false,
-  "foldIndent": false
+  "foldIndent": false,
+  "alwaysUpdateLinks": true
 }
