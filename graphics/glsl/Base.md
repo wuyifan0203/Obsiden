@@ -39,3 +39,17 @@ void main(){
 	vec2 uv = (fragCoord.x/iResolution.x, fragCoord.y/iResolution.y);
 }
 ```
+
+
+# Struct
+```GLSL
+// 在主函数外定义
+Struct ScanCircle {
+	vec2 center;
+	float radius;
+	float speed;
+}
+// 传入uScanCircle
+uniform ScanCircle uScanCircle;
+```
+
