@@ -2,7 +2,7 @@
  * @Author: wuyifan0203 1208097313@qq.com
  * @Date: 2024-02-29 15:45:49
  * @LastEditors: wuyifan0203 1208097313@qq.com
- * @LastEditTime: 2024-07-10 14:44:16
+ * @LastEditTime: 2025-03-05 14:32:09
  * @FilePath: /Obsidian Vault/graphics/threejs/webglrender.js
  * Copyright (c) 2024 by wuyifan email: 1208097313@qq.com, All Rights Reserved.
  */
@@ -266,13 +266,18 @@ class WebGLRenderer {
         const fog = scene.fog;
         const env = material.env || scene.environment;
 
+
+
         const materialProperties = this.properties.get(material);
         const lights = this.currentRenderState.state.lights;
 
+        // 是否需要剪裁
+
         let needsProgramChange = false;
 
+        // 根据多个条件判断，是否需要更新
         if (material.version === materialProperties.__version) {
-            if (materialProperties.needLights && (materialProperties.lightStateVersion !== light.state.version)) {
+            if (materialProperties.needLights && (materialProperties.lightStateVersion !== lights.state.version)) {
                 needsProgramChange = true;
             } else if (materialProperties.env !== env) {
                 needsProgramChange = true;
@@ -324,6 +329,8 @@ class WebGLRenderer {
             }
         } else {
             parameters.uniforms = this.programCache.getUniforms(material);
+
+            material.onBeforeCompare(parameters, this);
             // cy
         }
 
