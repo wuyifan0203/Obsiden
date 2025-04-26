@@ -69,12 +69,12 @@
 3. 一共几轮面试？如果有幸通过这轮面试，接下来面试如何安排？
 4. 晋升机制
 
-
 ## 解决困难
 
 > 遵从 S(ituation) + T(ask) + A(ction) + R(esult) 原则
 
-1. 白屏问题
+### 白屏问题
+
 * S:在2.0 云板环境中，软件仿真任务时间较长，用户会切换页面或者浏览器最小化后，长时间没有任何操作，资源可能会被释放掉，导致白屏。
 * T: 如何在一天内解决白屏问题？
 * A: 提出检测webGLContextLost和restore事件，刷新(window.location.reload())
@@ -83,39 +83,41 @@
 * S:后续迭代，使用electron打包桌面软件生成单机版，在本地运行，资源抢占和长时间没有操作，最小化导致白屏。
 * T: 解决单机版的electron环境下白屏？
 * A: 白屏问题进行分析，
-    * 内存泄漏，项目过多，自身问题
-    * 资源抢占，electron环境下，GPU资源webGL与算力抢占问题
-    * 硬件问题，驱动更新或掉了
+  * 内存泄漏，项目过多，自身问题
+  * 资源抢占，electron环境下，GPU资源webGL与算力抢占问题
+  * 硬件问题，驱动更新或掉了
     对模块的包进行升级改造，做好恢复机制
     主动复现问题进行测试
 * R: 白屏问题得到解决,顺利发版交付。
 
-2. 性能问题
+### 性能问题
+
 * S: 2.0 版本中，在CAD中进行700个几何图形，导致软件卡顿，影响用户体验，1300个直接崩溃。
 * T: 在新版本中解决渲染物体的上限低，卡顿问题？
 * A: 分析性能问题，
-    * 代码审查，打印日志，查看render.info和浏览器的任务面板（自身内存泄漏）
-    * 使用spector.js插件,监测drawCall的绘制流程（drawCall次数频繁）
-    * 减少渲染次数，按需渲染（tick次数频繁）
+  * 代码审查，打印日志，查看render.info和浏览器的任务面板（自身内存泄漏）
+  * 使用spector.js插件,监测drawCall的绘制流程（drawCall次数频繁）
+  * 减少渲染次数，按需渲染（tick次数频繁）
 * R: 性能问题得到解决,顺利发版交付。
 
-3. 标签展示问题
+### 标签展示问题
+
 * S: 在回显展示中，三角网格数据标记，会需要大量的标签。
 * T: 如何解决CAD中几何图形标签展示问题？
 * A: 分析问题，
-    * 使用Spirit加CanvasTexture渲染标签
-    * 标注信息过多，任然卡顿，采用PlaneGeometry + CanvasTexture合并渲染
-    * 推进采用，InstanceMesh + CanvasTexture合并渲染，但灵活度不够，不支持变色
-    * 终极方案，InstanceBufferGeometry+CanvasTexture合并渲染，支持变色
+  * 使用Spirit加CanvasTexture渲染标签
+  * 标注信息过多，任然卡顿，采用PlaneGeometry + CanvasTexture合并渲染
+  * 推进采用，InstanceMesh + CanvasTexture合并渲染，但灵活度不够，不支持变色
+  * 终极方案，InstanceBufferGeometry+CanvasTexture合并渲染，支持变色
 * R: 标签展示问题得到解决,顺利发版交付。
 
-4.数据精度问题
+### 数据精度问题
+
 * S: 仿真计算时，生成的几何模型前端展示是接壤的，仿真的结果产生了缝隙
 * T: 如何解决CAD中几何图形精度问题？
 * A: 分析问题，
-    * 计算机二进制自身问题，采用Mathjs进行数学处理计算，
-    * 数据源的问题，直接从Mesh获取的Geometry为Float32bufferGeometry，
-    * 减少非必要的计算，
-    * 使用误差计算
+  * 计算机二进制自身问题，采用Mathjs进行数学处理计算，
+  * 数据源的问题，直接从Mesh获取的Geometry为Float32bufferGeometry，
+  * 减少非必要的计算，
+  * 使用误差计算
 * R: 数据精度问题得到解决,顺利发版交付。
-
