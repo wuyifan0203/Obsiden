@@ -1,5 +1,15 @@
 # 整体流程
 
+## 概念
+* CAD（Computer-Aided Design）：利用计算机软件创建、修改和优化产品的几何模型（如零件、装配体等）
+* CAE（Computer-Aided Engineering）：利用计算机软件进行工程设计和分析，包括几何建模、仿真、优化等
+* CAM（Computer-Aided Manufacturing）：利用计算机软件进行机械设计和制造，包括零件装配、路径规划等
+
+## 竞品
+* ANSYS Lumerical Multiphysics Photonics Component Simulation Software
+* CST Studio suite
+* Tidy3D
+
 ## 自我介绍
 
 基本信息+经理介绍+个人优势+意向度
